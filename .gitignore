@@ -11,3 +11,8 @@ dist-ssr
 .vinxi
 __unconfig*
 todos.json
+
+# Local agent/editor metadata
+.cta.json
+.cursorrules
+.vscode/
