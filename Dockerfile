@@ -40,4 +40,4 @@ COPY --from=builder /app/src/generated        ./src/generated
 EXPOSE 3000
 
 # prisma db push syncs the schema then starts the server
-CMD ["sh", "-c", "node_modules/.bin/prisma db push && node dist/server/server.js"]
+CMD ["sh", "-c", "node_modules/.bin/prisma db push && node dist/server/server.js 2>&1; echo \"=== SERVER EXITED CODE $? ===\"; sleep 60"]
