@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Todo {
+  id        Int      @id @default(autoincrement())
+  title     String
+  createdAt DateTime @default(now())
+}
+
+model DiceLeaderboard {
+  id           Int      @id @default(autoincrement())
+  nickname     String   @unique
+  bestStreak   Int      @default(0)
+  bestBankroll Int      @default(0)
+  totalRolls   Int      @default(0)
+  totalWins    Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

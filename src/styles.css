@@ -1,0 +1,552 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --val-red: #ff4655;
+  --val-red-dark: #c12030;
+  --val-red-glow: rgba(255, 70, 85, 0.3);
+  --val-red-subtle: rgba(255, 70, 85, 0.1);
+  --val-teal: #00c4b0;
+  --val-teal-glow: rgba(0, 196, 176, 0.2);
+  --val-navy: #0f1923;
+  --val-navy-mid: #1a2733;
+  --val-navy-light: #253342;
+  --val-cream: #ece8e1;
+  --val-grey: #768079;
+  --val-grey-light: #a8b0b8;
+  --val-gold: #f5c842;
+
+  /* Rank colors */
+  --rank-radianite: #3fb8d4;
+  --rank-immortal: #d4344a;
+  --rank-radiant: #ffe072;
+
+  /* shadcn compat */
+  --background: #0f1923;
+  --foreground: #ece8e1;
+  --card: #1a2733;
+  --card-foreground: #ece8e1;
+  --popover: #1a2733;
+  --popover-foreground: #ece8e1;
+  --primary: #ff4655;
+  --primary-foreground: #ffffff;
+  --secondary: #253342;
+  --secondary-foreground: #ece8e1;
+  --muted: #253342;
+  --muted-foreground: #768079;
+  --accent: #00c4b0;
+  --accent-foreground: #0f1923;
+  --destructive: #ff4655;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 70, 85, 0.18);
+  --input: #253342;
+  --ring: rgba(255, 70, 85, 0.35);
+  --radius: 2px;
+  --sidebar: #1a2733;
+  --sidebar-foreground: #ece8e1;
+  --sidebar-primary: #ff4655;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #253342;
+  --sidebar-accent-foreground: #ece8e1;
+  --sidebar-border: rgba(255, 70, 85, 0.18);
+  --sidebar-ring: rgba(255, 70, 85, 0.35);
+}
+
+@theme inline {
+  --font-sans: 'Rajdhani', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Bebas Neue', 'Arial Black', Impact, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 1px);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 2px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--val-cream);
+  font-family: 'Rajdhani', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+  background-color: var(--val-navy);
+  background-image:
+    radial-gradient(ellipse 1400px 900px at -8% -25%, rgba(255, 70, 85, 0.08) 0%, transparent 58%),
+    radial-gradient(ellipse 900px 600px at 108% 110%, rgba(0, 196, 176, 0.04) 0%, transparent 55%);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scanline texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.022) 2px,
+    rgba(0, 0, 0, 0.022) 4px
+  );
+}
+
+/* Grid pattern — fades toward bottom */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.055;
+  background-image:
+    linear-gradient(rgba(255, 70, 85, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 70, 85, 0.12) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 90% 50% at 50% 0%, black 10%, transparent);
+}
+
+a {
+  color: var(--val-teal);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+a:hover {
+  color: #33d4c0;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+.display-title {
+  font-family: 'Bebas Neue', 'Arial Black', Impact, sans-serif;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.val-kicker {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--val-red);
+}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+
+.val-card {
+  position: relative;
+  background: linear-gradient(160deg, #1a2733 0%, #131d27 100%);
+  border: 1px solid rgba(255, 70, 85, 0.16);
+  border-left: 2px solid rgba(255, 70, 85, 0.38);
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 180ms ease;
+}
+
+.val-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 70, 85, 0.55), transparent 65%);
+}
+
+.val-card:hover {
+  border-color: rgba(255, 70, 85, 0.38);
+  border-left-color: var(--val-red);
+  box-shadow:
+    0 0 28px rgba(255, 70, 85, 0.09),
+    0 8px 24px rgba(0, 0, 0, 0.35);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+
+.val-section-header {
+  position: relative;
+  background: linear-gradient(140deg, #141f2d 0%, #0f1923 100%);
+  border: 1px solid rgba(255, 70, 85, 0.15);
+  border-top: 2px solid var(--val-red);
+}
+
+.val-section-header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 70, 85, 0.2), transparent 60%);
+}
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+
+.val-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid;
+  line-height: 1.6;
+}
+
+.val-badge-red {
+  border-color: rgba(255, 70, 85, 0.5);
+  color: #ffcdd1;
+}
+
+.val-badge-teal {
+  border-color: rgba(0, 196, 176, 0.5);
+  color: #80e8df;
+}
+
+.val-badge-gold {
+  border-color: rgba(240, 196, 94, 0.5);
+  color: #ffe9a8;
+  background: rgba(78, 56, 10, 0.55);
+}
+
+.val-badge-grey {
+  border-color: rgba(180, 188, 196, 0.4);
+  color: #e0e6ec;
+  background: rgba(42, 50, 60, 0.62);
+}
+
+.val-badge-green {
+  border-color: rgba(80, 200, 130, 0.5);
+  color: #c8f7d8;
+  background: rgba(12, 62, 34, 0.6);
+}
+
+/* ============================================================
+   VIP RANK CARDS
+   ============================================================ */
+
+.val-rank-card {
+  position: relative;
+  border: 1px solid;
+  transition:
+    box-shadow 200ms ease,
+    transform 180ms ease;
+}
+
+.val-rank-card:hover {
+  transform: translateY(-1px);
+}
+
+.val-rank-radianite {
+  background: linear-gradient(160deg, #0d1f30 0%, #0f1923 100%);
+  border-color: rgba(63, 184, 212, 0.28);
+  border-top: 2px solid #3fb8d4;
+}
+
+.val-rank-radianite:hover {
+  box-shadow: 0 0 32px rgba(63, 184, 212, 0.12);
+}
+
+.val-rank-immortal {
+  background: linear-gradient(160deg, #2a0e14 0%, #1a0b12 100%);
+  border-color: rgba(212, 52, 74, 0.32);
+  border-top: 2px solid #d4344a;
+}
+
+.val-rank-immortal:hover {
+  box-shadow: 0 0 32px rgba(212, 52, 74, 0.14);
+}
+
+.val-rank-radiant {
+  background: linear-gradient(160deg, #24200a 0%, #191500 100%);
+  border-color: rgba(255, 224, 114, 0.28);
+  border-top: 2px solid #ffe072;
+}
+
+.val-rank-radiant:hover {
+  box-shadow: 0 0 32px rgba(255, 224, 114, 0.12);
+}
+
+/* ============================================================
+   PROGRESS BAR
+   ============================================================ */
+
+.val-progress {
+  position: relative;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+
+.val-progress-inner {
+  height: 100%;
+  background: linear-gradient(90deg, var(--val-red), #ff8591);
+  transition: width 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+.val-nav-link {
+  position: relative;
+  transition: color 180ms ease;
+}
+
+.val-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--val-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease;
+}
+
+.val-nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.val-nav-link-active::after {
+  transform: scaleX(1);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.site-footer {
+  border-top: 1px solid rgba(255, 70, 85, 0.12);
+  background: rgba(9, 14, 20, 0.55);
+}
+
+/* ============================================================
+   ANIMATION
+   ============================================================ */
+
+.rise-in {
+  animation: val-rise 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ============================================================
+   3D DICE GAME
+   ============================================================ */
+
+.dice-stage {
+  background:
+    radial-gradient(circle at 22% 18%, rgba(255, 70, 85, 0.1), transparent 40%),
+    radial-gradient(circle at 78% 82%, rgba(0, 196, 176, 0.08), transparent 45%),
+    linear-gradient(160deg, #182433 0%, #111b26 100%);
+}
+
+.dice-scene {
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  perspective: 900px;
+}
+
+.dice-cube {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  transform-style: preserve-3d;
+  transition: transform 1100ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dice-particles {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.dice-particle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 7px;
+  height: 13px;
+  opacity: 0;
+  background: linear-gradient(180deg, #ff4655, #ff8a95);
+  transform: translate(-50%, -50%) rotate(var(--particle-angle));
+  animation: dice-burst var(--particle-duration) ease-out var(--particle-delay) forwards;
+}
+
+.dice-particle:nth-child(3n) {
+  background: linear-gradient(180deg, #00c4b0, #7ee9dd);
+}
+
+.dice-particle:nth-child(4n) {
+  background: linear-gradient(180deg, #ffe072, #f5c842);
+}
+
+.dice-face {
+  position: absolute;
+  width: 132px;
+  height: 132px;
+  display: grid;
+  place-items: center;
+  font-family: 'Bebas Neue', 'Arial Black', Impact, sans-serif;
+  font-size: 3.5rem;
+  color: #ece8e1;
+  border: 1px solid rgba(255, 70, 85, 0.45);
+  box-shadow:
+    inset 0 0 40px rgba(255, 70, 85, 0.1),
+    0 0 22px rgba(255, 70, 85, 0.08);
+  background: linear-gradient(145deg, #223344 0%, #182634 100%);
+}
+
+.dice-face-1 {
+  transform: rotateY(0deg) translateZ(66px);
+}
+
+.dice-face-2 {
+  transform: rotateX(90deg) translateZ(66px);
+}
+
+.dice-face-3 {
+  transform: rotateY(-90deg) translateZ(66px);
+}
+
+.dice-face-4 {
+  transform: rotateY(90deg) translateZ(66px);
+}
+
+.dice-face-5 {
+  transform: rotateX(-90deg) translateZ(66px);
+}
+
+.dice-face-6 {
+  transform: rotateY(180deg) translateZ(66px);
+}
+
+.val-input {
+  border: 1px solid rgba(255, 70, 85, 0.25);
+  background: rgba(10, 16, 24, 0.72);
+  color: #ece8e1;
+  outline: none;
+}
+
+.val-input:focus {
+  border-color: rgba(255, 70, 85, 0.65);
+  box-shadow: 0 0 0 2px rgba(255, 70, 85, 0.18);
+}
+
+.val-toggle {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #253342;
+  color: #eef2f6;
+  padding: 0.65rem 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.val-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ece8e1;
+}
+
+.val-toggle-active {
+  border-color: rgba(255, 70, 85, 0.65);
+  background: rgba(101, 21, 31, 0.72);
+  color: #fff4f6;
+}
+
+@keyframes val-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dice-burst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--particle-angle)) translateY(0) scale(0.35);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--particle-angle)) translateY(calc(-1 * var(--particle-distance)))
+      scale(0.9);
+  }
+}
+
+/* ============================================================
+   BASE LAYER (shadcn compat)
+   ============================================================ */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
