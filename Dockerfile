@@ -36,8 +36,8 @@ COPY --from=builder /app/dist                 ./dist
 COPY --from=builder /app/prisma               ./prisma
 COPY --from=builder /app/prisma.config.ts     ./prisma.config.ts
 COPY --from=builder /app/src/generated        ./src/generated
+COPY --from=builder /app/serve.mjs            ./serve.mjs
 
 EXPOSE 3000
 
-# prisma db push syncs the schema then starts the server
-CMD ["sh", "-c", "node_modules/.bin/prisma db push && node dist/server/server.js 2>&1; echo \"=== SERVER EXITED CODE $? ===\"; sleep 60"]
+CMD ["sh", "-c", "node_modules/.bin/prisma db push && node serve.mjs"]
