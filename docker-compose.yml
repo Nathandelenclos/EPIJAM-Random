@@ -1,34 +1,15 @@
 services:
-  db:
-    image: postgres:16-alpine
-    container_name: valorantcasino-db
-    restart: unless-stopped
-    environment:
-      POSTGRES_DB: valorantcasino
-      POSTGRES_USER: app
-      POSTGRES_PASSWORD: app
-    volumes:
-      - valorantcasino_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U app -d valorantcasino']
-      interval: 5s
-      timeout: 5s
-      retries: 20
-
   app:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: valorantcasino-app
     restart: unless-stopped
-    depends_on:
-      db:
-        condition: service_healthy
     environment:
       NODE_ENV: production
       HOST: 0.0.0.0
       PORT: 3000
-      DATABASE_URL: postgresql://app:app@db:5432/valorantcasino
+      DATABASE_URL: ${DATABASE_URL}
     healthcheck:
       test:
         [
@@ -38,6 +19,3 @@ services:
       interval: 10s
       timeout: 5s
       retries: 12
-
-volumes:
-  valorantcasino_data:
