@@ -1,13 +1,45 @@
 import { createServer } from 'node:http'
+import { createReadStream, statSync } from 'node:fs'
+import { resolve, extname } from 'node:path'
 import handler from './dist/server/server.js'
 
 const port = parseInt(process.env.PORT ?? '3000', 10)
 const host = process.env.HOST ?? '0.0.0.0'
+const clientDir = resolve('./dist/client')
+
+const mimeTypes = {
+  '.js': 'application/javascript',
+  '.css': 'text/css',
+  '.html': 'text/html',
+  '.json': 'application/json',
+  '.png': 'image/png',
+  '.svg': 'image/svg+xml',
+  '.ico': 'image/x-icon',
+  '.woff2': 'font/woff2',
+  '.woff': 'font/woff',
+}
+
+function tryServeStatic(pathname, res) {
+  try {
+    const filePath = resolve(clientDir, '.' + pathname)
+    if (!filePath.startsWith(clientDir)) return false
+    const stat = statSync(filePath)
+    if (!stat.isFile()) return false
+    const mime = mimeTypes[extname(filePath)] ?? 'application/octet-stream'
+    res.writeHead(200, { 'Content-Type': mime, 'Content-Length': stat.size })
+    createReadStream(filePath).pipe(res)
+    return true
+  } catch {
+    return false
+  }
+}
 
 const server = createServer(async (req, res) => {
   try {
     const base = `http://${req.headers.host ?? `localhost:${port}`}`
     const url = new URL(req.url ?? '/', base)
+
+    if (tryServeStatic(url.pathname, res)) return
 
     const headers = new Headers()
     for (const [key, val] of Object.entries(req.headers)) {
