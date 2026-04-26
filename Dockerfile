@@ -4,13 +4,12 @@ FROM node:22-slim AS base
 RUN apt-get update -y && apt-get install -y openssl ca-certificates && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-RUN corepack enable
 
 # ── deps ─────────────────────────────────────────────────────────────────────
 FROM base AS deps
 
-COPY package.json pnpm-lock.yaml* package-lock.json* ./
-RUN pnpm install --no-frozen-lockfile
+COPY package.json package-lock.json* ./
+RUN npm ci --ignore-scripts
 
 # ── builder ──────────────────────────────────────────────────────────────────
 FROM base AS builder
@@ -20,8 +19,8 @@ COPY . .
 
 # DATABASE_URL is needed by prisma.config.ts at generate time (no real connection needed)
 ENV DATABASE_URL=postgresql://app:app@db:5432/valorantcasino
-RUN pnpm exec prisma generate
-RUN pnpm run build
+RUN npx prisma generate
+RUN npm run build
 
 # ── runner ───────────────────────────────────────────────────────────────────
 FROM base AS runner
