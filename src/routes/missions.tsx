@@ -7,21 +7,54 @@ function parsePct(progress: string): number {
   return m ? Math.round((Number.parseInt(m[1]) / Number.parseInt(m[2])) * 100) : 0
 }
 
-function MissionsPage() {
-  const missions = [
-    { title: 'Win Streak', reward: '+250 VP', progress: '2 / 5 sessions gagnantes' },
-    { title: 'Eco Master', reward: '+180 VP', progress: '4 / 10 mises low risk' },
-    { title: 'Clutch Bonus', reward: '+1 coffre rare', progress: '1 / 3 jackpots critiques' },
-    { title: 'Team Queue', reward: '+15% cashback', progress: 'Activer en groupe de 3' },
-  ]
+const missions = [
+  {
+    title: 'Ace Protocol',
+    reward: '+250 VP',
+    progress: '2 / 5 mains gagnantes consécutives',
+    hint: 'Pas de défaite entre deux — Jett speed non incluse',
+  },
+  {
+    title: 'Eco Round',
+    reward: '+180 RP',
+    progress: '4 / 10 mises low risk validées',
+    hint: 'Frenzy ou Ghost seulement — sauvegarde ta bankroll comme un pro',
+  },
+  {
+    title: '1v4 Overtime',
+    reward: '+1 Radianite Chest',
+    progress: '1 / 3 jackpots critiques en overtime',
+    hint: "Active le mode Empress de Reyna pour maximiser tes chances",
+  },
+  {
+    title: 'Full 5-Stack',
+    reward: '+15% cashback',
+    progress: 'Activer en squad de 5 agents',
+    hint: 'Queue together ou rien — solo queue disqualifié',
+  },
+  {
+    title: 'Spike Rush',
+    reward: '+500 VP',
+    progress: '3 / 5 sessions Spike Rush gagnées',
+    hint: 'Le format le plus rapide du casino — no eco, no mercy',
+  },
+  {
+    title: 'Vandal Flush',
+    reward: '+200 VP',
+    progress: '2 / 4 jackpots avec mise Vandal active',
+    hint: 'La mise Vandal débloque le bonus headshot ×1.5 sur chaque spin',
+  },
+]
 
+function MissionsPage() {
   return (
     <section className="space-y-5">
       <header className="val-section-header p-7">
-        <p className="val-kicker">Battlepass Casino</p>
+        <p className="val-kicker">Battlepass Casino · Kingdom Corp</p>
         <h1 className="display-title mt-2 text-5xl text-white">Missions quotidiennes</h1>
         <p className="mt-3 max-w-3xl leading-relaxed text-[#a8b0b8]">
-          Complétez des objectifs pour débloquer bonus, spins gratuits et boosters de bankroll.
+          Complétez vos objectifs de protocole pour débloquer VP, Radianite Points et caisses Kingdom Corp.
+          Reset à chaque minuit — heure de Venise.
         </p>
       </header>
 
@@ -35,7 +68,8 @@ function MissionsPage() {
                 <span className="val-badge val-badge-red shrink-0">{mission.reward}</span>
               </div>
 
-              <p className="mt-4 text-sm text-[#a8b0b8]">{mission.progress}</p>
+              <p className="mt-3 text-sm text-[#a8b0b8]">{mission.progress}</p>
+              <p className="mt-1 text-[0.7rem] italic text-[#768079]">{mission.hint}</p>
 
               {pct > 0 && (
                 <div className="mt-4 space-y-1.5">

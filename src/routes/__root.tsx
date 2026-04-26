@@ -63,7 +63,7 @@ function RootDocument({ children }: Readonly<{ children: React.ReactNode }>) {
         <main className="mx-auto w-[min(1100px,calc(100%-2rem))] py-10">{children}</main>
 
         <footer className="site-footer mt-10 py-5 text-center text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#768079]">
-          Jackpot Protocol Online&nbsp;·&nbsp;Neon District&nbsp;·&nbsp;24/7 Spike-Secured
+          Kingdom Corporation&nbsp;·&nbsp;Radianite-Powered&nbsp;·&nbsp;Protocol&nbsp;#7&nbsp;·&nbsp;Spike-Secured&nbsp;24/7
         </footer>
 
         <TanStackDevtools
