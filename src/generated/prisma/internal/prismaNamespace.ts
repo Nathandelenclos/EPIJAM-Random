@@ -385,7 +385,13 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Todo: 'Todo',
-  DiceLeaderboard: 'DiceLeaderboard'
+  DiceLeaderboard: 'DiceLeaderboard',
+  Player: 'Player',
+  CrateRushGame: 'CrateRushGame',
+  RouletteGame: 'RouletteGame',
+  BlackjackGame: 'BlackjackGame',
+  SlotsGame: 'SlotsGame',
+  PlayerMission: 'PlayerMission'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -401,7 +407,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "todo" | "diceLeaderboard"
+    modelProps: "todo" | "diceLeaderboard" | "player" | "crateRushGame" | "rouletteGame" | "blackjackGame" | "slotsGame" | "playerMission"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -553,6 +559,450 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Player: {
+      payload: Prisma.$PlayerPayload<ExtArgs>
+      fields: Prisma.PlayerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PlayerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PlayerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerPayload>
+        }
+        findFirst: {
+          args: Prisma.PlayerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PlayerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerPayload>
+        }
+        findMany: {
+          args: Prisma.PlayerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerPayload>[]
+        }
+        create: {
+          args: Prisma.PlayerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerPayload>
+        }
+        createMany: {
+          args: Prisma.PlayerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PlayerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerPayload>[]
+        }
+        delete: {
+          args: Prisma.PlayerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerPayload>
+        }
+        update: {
+          args: Prisma.PlayerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerPayload>
+        }
+        deleteMany: {
+          args: Prisma.PlayerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PlayerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PlayerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerPayload>[]
+        }
+        upsert: {
+          args: Prisma.PlayerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerPayload>
+        }
+        aggregate: {
+          args: Prisma.PlayerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlayer>
+        }
+        groupBy: {
+          args: Prisma.PlayerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlayerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PlayerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlayerCountAggregateOutputType> | number
+        }
+      }
+    }
+    CrateRushGame: {
+      payload: Prisma.$CrateRushGamePayload<ExtArgs>
+      fields: Prisma.CrateRushGameFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CrateRushGameFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CrateRushGamePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CrateRushGameFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CrateRushGamePayload>
+        }
+        findFirst: {
+          args: Prisma.CrateRushGameFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CrateRushGamePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CrateRushGameFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CrateRushGamePayload>
+        }
+        findMany: {
+          args: Prisma.CrateRushGameFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CrateRushGamePayload>[]
+        }
+        create: {
+          args: Prisma.CrateRushGameCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CrateRushGamePayload>
+        }
+        createMany: {
+          args: Prisma.CrateRushGameCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CrateRushGameCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CrateRushGamePayload>[]
+        }
+        delete: {
+          args: Prisma.CrateRushGameDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CrateRushGamePayload>
+        }
+        update: {
+          args: Prisma.CrateRushGameUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CrateRushGamePayload>
+        }
+        deleteMany: {
+          args: Prisma.CrateRushGameDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CrateRushGameUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CrateRushGameUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CrateRushGamePayload>[]
+        }
+        upsert: {
+          args: Prisma.CrateRushGameUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CrateRushGamePayload>
+        }
+        aggregate: {
+          args: Prisma.CrateRushGameAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCrateRushGame>
+        }
+        groupBy: {
+          args: Prisma.CrateRushGameGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CrateRushGameGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CrateRushGameCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CrateRushGameCountAggregateOutputType> | number
+        }
+      }
+    }
+    RouletteGame: {
+      payload: Prisma.$RouletteGamePayload<ExtArgs>
+      fields: Prisma.RouletteGameFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RouletteGameFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RouletteGamePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RouletteGameFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RouletteGamePayload>
+        }
+        findFirst: {
+          args: Prisma.RouletteGameFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RouletteGamePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RouletteGameFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RouletteGamePayload>
+        }
+        findMany: {
+          args: Prisma.RouletteGameFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RouletteGamePayload>[]
+        }
+        create: {
+          args: Prisma.RouletteGameCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RouletteGamePayload>
+        }
+        createMany: {
+          args: Prisma.RouletteGameCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RouletteGameCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RouletteGamePayload>[]
+        }
+        delete: {
+          args: Prisma.RouletteGameDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RouletteGamePayload>
+        }
+        update: {
+          args: Prisma.RouletteGameUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RouletteGamePayload>
+        }
+        deleteMany: {
+          args: Prisma.RouletteGameDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RouletteGameUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RouletteGameUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RouletteGamePayload>[]
+        }
+        upsert: {
+          args: Prisma.RouletteGameUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RouletteGamePayload>
+        }
+        aggregate: {
+          args: Prisma.RouletteGameAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRouletteGame>
+        }
+        groupBy: {
+          args: Prisma.RouletteGameGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RouletteGameGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RouletteGameCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RouletteGameCountAggregateOutputType> | number
+        }
+      }
+    }
+    BlackjackGame: {
+      payload: Prisma.$BlackjackGamePayload<ExtArgs>
+      fields: Prisma.BlackjackGameFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BlackjackGameFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BlackjackGamePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BlackjackGameFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BlackjackGamePayload>
+        }
+        findFirst: {
+          args: Prisma.BlackjackGameFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BlackjackGamePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BlackjackGameFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BlackjackGamePayload>
+        }
+        findMany: {
+          args: Prisma.BlackjackGameFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BlackjackGamePayload>[]
+        }
+        create: {
+          args: Prisma.BlackjackGameCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BlackjackGamePayload>
+        }
+        createMany: {
+          args: Prisma.BlackjackGameCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BlackjackGameCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BlackjackGamePayload>[]
+        }
+        delete: {
+          args: Prisma.BlackjackGameDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BlackjackGamePayload>
+        }
+        update: {
+          args: Prisma.BlackjackGameUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BlackjackGamePayload>
+        }
+        deleteMany: {
+          args: Prisma.BlackjackGameDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BlackjackGameUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BlackjackGameUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BlackjackGamePayload>[]
+        }
+        upsert: {
+          args: Prisma.BlackjackGameUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BlackjackGamePayload>
+        }
+        aggregate: {
+          args: Prisma.BlackjackGameAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBlackjackGame>
+        }
+        groupBy: {
+          args: Prisma.BlackjackGameGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BlackjackGameGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BlackjackGameCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BlackjackGameCountAggregateOutputType> | number
+        }
+      }
+    }
+    SlotsGame: {
+      payload: Prisma.$SlotsGamePayload<ExtArgs>
+      fields: Prisma.SlotsGameFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SlotsGameFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlotsGamePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SlotsGameFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlotsGamePayload>
+        }
+        findFirst: {
+          args: Prisma.SlotsGameFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlotsGamePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SlotsGameFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlotsGamePayload>
+        }
+        findMany: {
+          args: Prisma.SlotsGameFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlotsGamePayload>[]
+        }
+        create: {
+          args: Prisma.SlotsGameCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlotsGamePayload>
+        }
+        createMany: {
+          args: Prisma.SlotsGameCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SlotsGameCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlotsGamePayload>[]
+        }
+        delete: {
+          args: Prisma.SlotsGameDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlotsGamePayload>
+        }
+        update: {
+          args: Prisma.SlotsGameUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlotsGamePayload>
+        }
+        deleteMany: {
+          args: Prisma.SlotsGameDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SlotsGameUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SlotsGameUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlotsGamePayload>[]
+        }
+        upsert: {
+          args: Prisma.SlotsGameUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlotsGamePayload>
+        }
+        aggregate: {
+          args: Prisma.SlotsGameAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSlotsGame>
+        }
+        groupBy: {
+          args: Prisma.SlotsGameGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SlotsGameGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SlotsGameCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SlotsGameCountAggregateOutputType> | number
+        }
+      }
+    }
+    PlayerMission: {
+      payload: Prisma.$PlayerMissionPayload<ExtArgs>
+      fields: Prisma.PlayerMissionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PlayerMissionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerMissionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PlayerMissionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerMissionPayload>
+        }
+        findFirst: {
+          args: Prisma.PlayerMissionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerMissionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PlayerMissionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerMissionPayload>
+        }
+        findMany: {
+          args: Prisma.PlayerMissionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerMissionPayload>[]
+        }
+        create: {
+          args: Prisma.PlayerMissionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerMissionPayload>
+        }
+        createMany: {
+          args: Prisma.PlayerMissionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PlayerMissionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerMissionPayload>[]
+        }
+        delete: {
+          args: Prisma.PlayerMissionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerMissionPayload>
+        }
+        update: {
+          args: Prisma.PlayerMissionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerMissionPayload>
+        }
+        deleteMany: {
+          args: Prisma.PlayerMissionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PlayerMissionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PlayerMissionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerMissionPayload>[]
+        }
+        upsert: {
+          args: Prisma.PlayerMissionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlayerMissionPayload>
+        }
+        aggregate: {
+          args: Prisma.PlayerMissionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlayerMission>
+        }
+        groupBy: {
+          args: Prisma.PlayerMissionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlayerMissionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PlayerMissionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlayerMissionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -613,6 +1063,82 @@ export const DiceLeaderboardScalarFieldEnum = {
 } as const
 
 export type DiceLeaderboardScalarFieldEnum = (typeof DiceLeaderboardScalarFieldEnum)[keyof typeof DiceLeaderboardScalarFieldEnum]
+
+
+export const PlayerScalarFieldEnum = {
+  id: 'id',
+  nickname: 'nickname',
+  balance: 'balance',
+  totalWagered: 'totalWagered',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlayerScalarFieldEnum = (typeof PlayerScalarFieldEnum)[keyof typeof PlayerScalarFieldEnum]
+
+
+export const CrateRushGameScalarFieldEnum = {
+  id: 'id',
+  playerId: 'playerId',
+  bet: 'bet',
+  won: 'won',
+  multiplier: 'multiplier',
+  createdAt: 'createdAt'
+} as const
+
+export type CrateRushGameScalarFieldEnum = (typeof CrateRushGameScalarFieldEnum)[keyof typeof CrateRushGameScalarFieldEnum]
+
+
+export const RouletteGameScalarFieldEnum = {
+  id: 'id',
+  playerId: 'playerId',
+  bet: 'bet',
+  choice: 'choice',
+  result: 'result',
+  won: 'won',
+  payout: 'payout',
+  createdAt: 'createdAt'
+} as const
+
+export type RouletteGameScalarFieldEnum = (typeof RouletteGameScalarFieldEnum)[keyof typeof RouletteGameScalarFieldEnum]
+
+
+export const BlackjackGameScalarFieldEnum = {
+  id: 'id',
+  playerId: 'playerId',
+  bet: 'bet',
+  won: 'won',
+  playerScore: 'playerScore',
+  dealerScore: 'dealerScore',
+  createdAt: 'createdAt'
+} as const
+
+export type BlackjackGameScalarFieldEnum = (typeof BlackjackGameScalarFieldEnum)[keyof typeof BlackjackGameScalarFieldEnum]
+
+
+export const SlotsGameScalarFieldEnum = {
+  id: 'id',
+  playerId: 'playerId',
+  bet: 'bet',
+  won: 'won',
+  symbols: 'symbols',
+  payout: 'payout',
+  createdAt: 'createdAt'
+} as const
+
+export type SlotsGameScalarFieldEnum = (typeof SlotsGameScalarFieldEnum)[keyof typeof SlotsGameScalarFieldEnum]
+
+
+export const PlayerMissionScalarFieldEnum = {
+  id: 'id',
+  playerId: 'playerId',
+  missionKey: 'missionKey',
+  progress: 'progress',
+  completed: 'completed',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlayerMissionScalarFieldEnum = (typeof PlayerMissionScalarFieldEnum)[keyof typeof PlayerMissionScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -676,6 +1202,13 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -804,6 +1337,12 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   todo?: Prisma.TodoOmit
   diceLeaderboard?: Prisma.DiceLeaderboardOmit
+  player?: Prisma.PlayerOmit
+  crateRushGame?: Prisma.CrateRushGameOmit
+  rouletteGame?: Prisma.RouletteGameOmit
+  blackjackGame?: Prisma.BlackjackGameOmit
+  slotsGame?: Prisma.SlotsGameOmit
+  playerMission?: Prisma.PlayerMissionOmit
 }
 
 /* Types for Logging */

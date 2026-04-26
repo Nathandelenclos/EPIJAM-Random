@@ -10,4 +10,10 @@
  */
 export type * from './models/Todo.ts'
 export type * from './models/DiceLeaderboard.ts'
+export type * from './models/Player.ts'
+export type * from './models/CrateRushGame.ts'
+export type * from './models/RouletteGame.ts'
+export type * from './models/BlackjackGame.ts'
+export type * from './models/SlotsGame.ts'
+export type * from './models/PlayerMission.ts'
 export type * from './commonInputTypes.ts'

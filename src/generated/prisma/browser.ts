@@ -27,3 +27,33 @@ export type Todo = Prisma.TodoModel
  * 
  */
 export type DiceLeaderboard = Prisma.DiceLeaderboardModel
+/**
+ * Model Player
+ * 
+ */
+export type Player = Prisma.PlayerModel
+/**
+ * Model CrateRushGame
+ * 
+ */
+export type CrateRushGame = Prisma.CrateRushGameModel
+/**
+ * Model RouletteGame
+ * 
+ */
+export type RouletteGame = Prisma.RouletteGameModel
+/**
+ * Model BlackjackGame
+ * 
+ */
+export type BlackjackGame = Prisma.BlackjackGameModel
+/**
+ * Model SlotsGame
+ * 
+ */
+export type SlotsGame = Prisma.SlotsGameModel
+/**
+ * Model PlayerMission
+ * 
+ */
+export type PlayerMission = Prisma.PlayerMissionModel

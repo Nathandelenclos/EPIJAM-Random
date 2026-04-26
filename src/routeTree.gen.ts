@@ -11,9 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VipRouteImport } from './routes/vip'
 import { Route as TablesRouteImport } from './routes/tables'
+import { Route as SlotsRouteImport } from './routes/slots'
+import { Route as RouletteRouteImport } from './routes/roulette'
 import { Route as MissionsRouteImport } from './routes/missions'
 import { Route as GamesRouteImport } from './routes/games'
 import { Route as Dice3dRouteImport } from './routes/dice-3d'
+import { Route as CrateRushRouteImport } from './routes/crate-rush'
+import { Route as BlackjackRouteImport } from './routes/blackjack'
 import { Route as IndexRouteImport } from './routes/index'
 
 const VipRoute = VipRouteImport.update({
@@ -24,6 +28,16 @@ const VipRoute = VipRouteImport.update({
 const TablesRoute = TablesRouteImport.update({
   id: '/tables',
   path: '/tables',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SlotsRoute = SlotsRouteImport.update({
+  id: '/slots',
+  path: '/slots',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RouletteRoute = RouletteRouteImport.update({
+  id: '/roulette',
+  path: '/roulette',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MissionsRoute = MissionsRouteImport.update({
@@ -41,6 +55,16 @@ const Dice3dRoute = Dice3dRouteImport.update({
   path: '/dice-3d',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CrateRushRoute = CrateRushRouteImport.update({
+  id: '/crate-rush',
+  path: '/crate-rush',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlackjackRoute = BlackjackRouteImport.update({
+  id: '/blackjack',
+  path: '/blackjack',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -49,49 +73,89 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blackjack': typeof BlackjackRoute
+  '/crate-rush': typeof CrateRushRoute
   '/dice-3d': typeof Dice3dRoute
   '/games': typeof GamesRoute
   '/missions': typeof MissionsRoute
+  '/roulette': typeof RouletteRoute
+  '/slots': typeof SlotsRoute
   '/tables': typeof TablesRoute
   '/vip': typeof VipRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blackjack': typeof BlackjackRoute
+  '/crate-rush': typeof CrateRushRoute
   '/dice-3d': typeof Dice3dRoute
   '/games': typeof GamesRoute
   '/missions': typeof MissionsRoute
+  '/roulette': typeof RouletteRoute
+  '/slots': typeof SlotsRoute
   '/tables': typeof TablesRoute
   '/vip': typeof VipRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blackjack': typeof BlackjackRoute
+  '/crate-rush': typeof CrateRushRoute
   '/dice-3d': typeof Dice3dRoute
   '/games': typeof GamesRoute
   '/missions': typeof MissionsRoute
+  '/roulette': typeof RouletteRoute
+  '/slots': typeof SlotsRoute
   '/tables': typeof TablesRoute
   '/vip': typeof VipRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dice-3d' | '/games' | '/missions' | '/tables' | '/vip'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dice-3d' | '/games' | '/missions' | '/tables' | '/vip'
-  id:
-    | '__root__'
+  fullPaths:
     | '/'
+    | '/blackjack'
+    | '/crate-rush'
     | '/dice-3d'
     | '/games'
     | '/missions'
+    | '/roulette'
+    | '/slots'
+    | '/tables'
+    | '/vip'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/blackjack'
+    | '/crate-rush'
+    | '/dice-3d'
+    | '/games'
+    | '/missions'
+    | '/roulette'
+    | '/slots'
+    | '/tables'
+    | '/vip'
+  id:
+    | '__root__'
+    | '/'
+    | '/blackjack'
+    | '/crate-rush'
+    | '/dice-3d'
+    | '/games'
+    | '/missions'
+    | '/roulette'
+    | '/slots'
     | '/tables'
     | '/vip'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlackjackRoute: typeof BlackjackRoute
+  CrateRushRoute: typeof CrateRushRoute
   Dice3dRoute: typeof Dice3dRoute
   GamesRoute: typeof GamesRoute
   MissionsRoute: typeof MissionsRoute
+  RouletteRoute: typeof RouletteRoute
+  SlotsRoute: typeof SlotsRoute
   TablesRoute: typeof TablesRoute
   VipRoute: typeof VipRoute
 }
@@ -110,6 +174,20 @@ declare module '@tanstack/react-router' {
       path: '/tables'
       fullPath: '/tables'
       preLoaderRoute: typeof TablesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/slots': {
+      id: '/slots'
+      path: '/slots'
+      fullPath: '/slots'
+      preLoaderRoute: typeof SlotsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roulette': {
+      id: '/roulette'
+      path: '/roulette'
+      fullPath: '/roulette'
+      preLoaderRoute: typeof RouletteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/missions': {
@@ -133,6 +211,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Dice3dRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/crate-rush': {
+      id: '/crate-rush'
+      path: '/crate-rush'
+      fullPath: '/crate-rush'
+      preLoaderRoute: typeof CrateRushRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blackjack': {
+      id: '/blackjack'
+      path: '/blackjack'
+      fullPath: '/blackjack'
+      preLoaderRoute: typeof BlackjackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -145,9 +237,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlackjackRoute: BlackjackRoute,
+  CrateRushRoute: CrateRushRoute,
   Dice3dRoute: Dice3dRoute,
   GamesRoute: GamesRoute,
   MissionsRoute: MissionsRoute,
+  RouletteRoute: RouletteRoute,
+  SlotsRoute: SlotsRoute,
   TablesRoute: TablesRoute,
   VipRoute: VipRoute,
 }

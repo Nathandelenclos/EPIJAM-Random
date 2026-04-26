@@ -23,3 +23,79 @@ model DiceLeaderboard {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
+
+model Player {
+  id           Int      @id @default(autoincrement())
+  nickname     String   @unique
+  balance      Int      @default(1000)
+  totalWagered Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  crateRushGames  CrateRushGame[]
+  rouletteGames   RouletteGame[]
+  blackjackGames  BlackjackGame[]
+  slotsGames      SlotsGame[]
+  missions        PlayerMission[]
+}
+
+model CrateRushGame {
+  id          Int      @id @default(autoincrement())
+  playerId    Int
+  bet         Int
+  won         Boolean
+  multiplier  Float    @default(1)
+  createdAt   DateTime @default(now())
+
+  player      Player   @relation(fields: [playerId], references: [id])
+}
+
+model RouletteGame {
+  id        Int      @id @default(autoincrement())
+  playerId  Int
+  bet       Int
+  choice    String
+  result    String
+  won       Boolean
+  payout    Int
+  createdAt DateTime @default(now())
+
+  player    Player   @relation(fields: [playerId], references: [id])
+}
+
+model BlackjackGame {
+  id         Int      @id @default(autoincrement())
+  playerId   Int
+  bet        Int
+  won        Boolean
+  playerScore Int
+  dealerScore Int
+  createdAt  DateTime @default(now())
+
+  player     Player   @relation(fields: [playerId], references: [id])
+}
+
+model SlotsGame {
+  id        Int      @id @default(autoincrement())
+  playerId  Int
+  bet       Int
+  won       Boolean
+  symbols   String
+  payout    Int
+  createdAt DateTime @default(now())
+
+  player    Player   @relation(fields: [playerId], references: [id])
+}
+
+model PlayerMission {
+  id          Int      @id @default(autoincrement())
+  playerId    Int
+  missionKey  String
+  progress    Int      @default(0)
+  completed   Boolean  @default(false)
+  updatedAt   DateTime @updatedAt
+
+  player      Player   @relation(fields: [playerId], references: [id])
+
+  @@unique([playerId, missionKey])
+}

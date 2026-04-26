@@ -52,7 +52,13 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Todo: 'Todo',
-  DiceLeaderboard: 'DiceLeaderboard'
+  DiceLeaderboard: 'DiceLeaderboard',
+  Player: 'Player',
+  CrateRushGame: 'CrateRushGame',
+  RouletteGame: 'RouletteGame',
+  BlackjackGame: 'BlackjackGame',
+  SlotsGame: 'SlotsGame',
+  PlayerMission: 'PlayerMission'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -92,6 +98,82 @@ export const DiceLeaderboardScalarFieldEnum = {
 } as const
 
 export type DiceLeaderboardScalarFieldEnum = (typeof DiceLeaderboardScalarFieldEnum)[keyof typeof DiceLeaderboardScalarFieldEnum]
+
+
+export const PlayerScalarFieldEnum = {
+  id: 'id',
+  nickname: 'nickname',
+  balance: 'balance',
+  totalWagered: 'totalWagered',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlayerScalarFieldEnum = (typeof PlayerScalarFieldEnum)[keyof typeof PlayerScalarFieldEnum]
+
+
+export const CrateRushGameScalarFieldEnum = {
+  id: 'id',
+  playerId: 'playerId',
+  bet: 'bet',
+  won: 'won',
+  multiplier: 'multiplier',
+  createdAt: 'createdAt'
+} as const
+
+export type CrateRushGameScalarFieldEnum = (typeof CrateRushGameScalarFieldEnum)[keyof typeof CrateRushGameScalarFieldEnum]
+
+
+export const RouletteGameScalarFieldEnum = {
+  id: 'id',
+  playerId: 'playerId',
+  bet: 'bet',
+  choice: 'choice',
+  result: 'result',
+  won: 'won',
+  payout: 'payout',
+  createdAt: 'createdAt'
+} as const
+
+export type RouletteGameScalarFieldEnum = (typeof RouletteGameScalarFieldEnum)[keyof typeof RouletteGameScalarFieldEnum]
+
+
+export const BlackjackGameScalarFieldEnum = {
+  id: 'id',
+  playerId: 'playerId',
+  bet: 'bet',
+  won: 'won',
+  playerScore: 'playerScore',
+  dealerScore: 'dealerScore',
+  createdAt: 'createdAt'
+} as const
+
+export type BlackjackGameScalarFieldEnum = (typeof BlackjackGameScalarFieldEnum)[keyof typeof BlackjackGameScalarFieldEnum]
+
+
+export const SlotsGameScalarFieldEnum = {
+  id: 'id',
+  playerId: 'playerId',
+  bet: 'bet',
+  won: 'won',
+  symbols: 'symbols',
+  payout: 'payout',
+  createdAt: 'createdAt'
+} as const
+
+export type SlotsGameScalarFieldEnum = (typeof SlotsGameScalarFieldEnum)[keyof typeof SlotsGameScalarFieldEnum]
+
+
+export const PlayerMissionScalarFieldEnum = {
+  id: 'id',
+  playerId: 'playerId',
+  missionKey: 'missionKey',
+  progress: 'progress',
+  completed: 'completed',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlayerMissionScalarFieldEnum = (typeof PlayerMissionScalarFieldEnum)[keyof typeof PlayerMissionScalarFieldEnum]
 
 
 export const SortOrder = {

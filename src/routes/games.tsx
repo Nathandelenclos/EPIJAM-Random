@@ -43,15 +43,17 @@ const games: Game[] = [
     risk: 'Risque moyen',
     riskLevel: 'medium',
     Icon: Swords,
+    path: '/crate-rush',
   },
   {
     name: 'Spike Roulette',
     agent: 'Omen',
-    desc: "Roulette 37 cases en zone de plant. La case Spike déclenche le bonus Defuse ×5 — Shrouded Step entre chaque spin.",
+    desc: "Roulette 37 cases en zone de plant. La case Spike déclenche le bonus Defuse ×14 — Shrouded Step entre chaque spin.",
     odds: 'RTP 96.4%',
     risk: 'Risque variable',
     riskLevel: 'variable',
     Icon: Target,
+    path: '/roulette',
   },
   {
     name: 'Agent Blackjack',
@@ -61,15 +63,17 @@ const games: Game[] = [
     risk: 'Risque faible',
     riskLevel: 'low',
     Icon: Users,
+    path: '/blackjack',
   },
   {
     name: 'Ulti Slots',
     agent: 'Reyna',
-    desc: "5 rouleaux, 10 agents — aligne Empress, Blade Storm ou Tour de Force pour le jackpot ulti. Devour actif en cascade.",
+    desc: "3 rouleaux, 5 symboles Valorant — aligne Spike ×3 pour le jackpot ulti ×20. Devour actif en cascade.",
     odds: 'RTP 95.9%',
     risk: 'Risque élevé',
     riskLevel: 'high',
     Icon: Zap,
+    path: '/slots',
   },
 ]
 
@@ -97,7 +101,6 @@ function GamesPage() {
 
             <h2 className="display-title mt-4 text-3xl text-white">{name}</h2>
 
-            {/* Agent host */}
             <p className="mt-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#00c4b0]/70">
               Animé par {agent}
             </p>
