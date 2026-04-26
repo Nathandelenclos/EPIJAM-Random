@@ -40,4 +40,4 @@ services:
       retries: 12
 
 volumes:
-  postgres_data:
+  valorantcasino_data:
